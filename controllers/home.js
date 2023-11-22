@@ -6,9 +6,13 @@ const { Blog, User, Comments } = require('../models');
 router.get('/', async (req,res) => {
     try{
     const allBlogs = await Blog.findAll({
-        include: [{model: User}, {model: Comments}]
+        include: [{model: User}]
     });
-    res.status(200).json(allBlogs);
+
+    const blogs = allBlogs.map((blog) => blog.get({ plain: true }));
+    console.log(blogs);
+    res.render('homepage', {blogs});
+    // res.status(200).json(allBlogs);
     }
     catch(err){
         res.status(500).json({message: 'Something went wrong'});
