@@ -15,10 +15,6 @@ Comments.init(
             type: Datatypes.TEXT,
             allowNull: false,
         },
-        creator: {
-            type: Datatypes.STRING,
-            allowNull: false,
-        },
         creator_id: {
             type: Datatypes.INTEGER,
             allowNull: false,
