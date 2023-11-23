@@ -6,9 +6,17 @@ const { Blog, User, Comments } = require('../models');
 router.get('/', async (req,res) => {
     try{
     const allBlogs = await Blog.findAll({
-        include: [{model: User}]
+        include: [
+            {
+                model: Comments,
+                attributes: [
+                    'comment',
+                ],
+            },
+            {model: User},
+        ],
     });
-
+    // console.log(allBlogs);
     const blogs = allBlogs.map((blog) => blog.get({ plain: true }));
     console.log(blogs);
     res.render('homepage', {blogs});

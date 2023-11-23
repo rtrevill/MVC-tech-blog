@@ -14,12 +14,16 @@ Blog.belongsTo(User, {
     foreignKey: 'creator_id',
 });
 
-Blog.hasMany(Comments, {
+Blog.hasOne(Comments, {
     foreignKey: 'blog_id',
 });
 
 Comments.belongsTo(User, {
     foreignKey: 'creator_id',
+});
+
+Comments.belongsTo(Blog, {
+    foreignKey: 'blog_id',
 });
 
 module.exports = {
