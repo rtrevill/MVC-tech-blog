@@ -20,15 +20,15 @@ Comments.init(
             allowNull: false,
             references: {
                 model: "user",
-                key: 'id',
+                key: "id",
             },
         },
         blog_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'blog',
-                key: 'id',
+                model: "blog",
+                key: "id",
             },
         },
     },

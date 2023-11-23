@@ -6,20 +6,20 @@ User.hasMany(Blog, {
     foreignKey: 'creator_id',
 });
 
-User.hasMany(Comments, {
-    foreignKey: 'creator_id',
-});
-
 Blog.belongsTo(User, {
     foreignKey: 'creator_id',
 });
 
-Blog.hasOne(Comments, {
-    foreignKey: 'blog_id',
+User.hasMany(Comments, {
+    foreignKey: 'creator_id',
 });
 
 Comments.belongsTo(User, {
     foreignKey: 'creator_id',
+});
+
+Blog.hasMany(Comments, {
+    foreignKey: 'blog_id',
 });
 
 Comments.belongsTo(Blog, {
