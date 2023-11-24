@@ -11,4 +11,31 @@ router.post('/', async (req,res) => {
     }
 });
 
+router.post('/login', async (req, res) => {
+    try{
+        const validUser = await User.findOne({ where: {username: req.body.username}});
+        console.log(validUser);
+
+        if (!validUser) {
+            res.status(400).json({message: 'Cannot find user with this Username'});
+            return;
+        }
+
+    const validatePassword = await validUser.checkPassword(req.body.password);
+
+        if (!validatePassword) {
+            res.status(400).json({ message: 'Not a valid password provided'});
+            return;
+        }
+
+    req.session.save(() => {
+        req.session.user_id = validUser.id;
+        req.session.loggedIn = true;
+
+        res.status(200);
+    })
+    }catch(err){
+        console.log(err);
+    }
+})
 module.exports = router;
