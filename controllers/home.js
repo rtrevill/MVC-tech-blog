@@ -50,4 +50,8 @@ router.get('/login', async (req,res) => {
     res.render('login');
 });
 
+router.get('/create-user', async (req, res) => {
+    res.render('create-user');
+});
+
 module.exports = router;
