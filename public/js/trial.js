@@ -3,11 +3,12 @@ const clickbutton = async (event) => {
     event.preventDefault();    
 
     const username = document.querySelector('#new-user-name').value;
+    const email = document.querySelector('#new-user-email').value;
     const password = document.querySelector('#new-user-password').value;
-    if (uname && upass){
+    if (username && email && password){
         const newUser = await fetch('/api/users', {
         method: 'POST',
-        body: JSON.stringify({ username, password}),
+        body: JSON.stringify({ username, email, password}),
         headers: { 'Content-Type': 'application/json' },
         });
     }
@@ -17,5 +18,5 @@ const clickbutton = async (event) => {
 }
 
 document
-.querySelector('button')
-.addEventListener('onclick', clickbutton);
+.querySelector('.btn')
+.addEventListener('click', clickbutton);
