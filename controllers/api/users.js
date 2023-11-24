@@ -38,4 +38,22 @@ router.post('/login', async (req, res) => {
         console.log(err);
     }
 })
+
+// router.get('/:id', async (req,res) => {
+//     try{
+//     const allBlogs = await User.findByPk(req.params.id, {
+//         include: [{model: Blog}, {model: Comments}]
+//     });
+//     console.log(allBlogs);
+//     const blogs = allBlogs.get({ plain: true });
+//     console.log(blogs);
+//     res.render('homepage', {blogs});
+//     // res.status(200).json(allBlogs);
+//     }
+//     catch(err){
+//         res.status(500).json({message: `Something went wrong ${err}`});
+//     }
+
+// });
+
 module.exports = router;
