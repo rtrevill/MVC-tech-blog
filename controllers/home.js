@@ -16,12 +16,17 @@ router.get('/', async (req,res) => {
         //     {model: User},
         // ],
     });
-    // console.log(allBlogs);
     const blogs = allBlogs.map((blog) => blog.get({ plain: true }));
-    console.log(blogs);
+
+
+    if (req.session.loggedIn){
+        console.log('Login confirmed');
+    }
     // console.log(blogs.comments)
-    res.render('homepage', {blogs});
-    // res.status(200).json(allBlogs);
+    // res.json({loggedin: req.session.loggedIn})
+    res.render('homepage', {
+        blogs,
+        logged_in: req.session.loggedIn});
     }
     catch(err){
         res.status(500).json({message: `Something went wrong ${err}`});

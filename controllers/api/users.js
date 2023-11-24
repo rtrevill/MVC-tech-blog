@@ -32,7 +32,7 @@ router.post('/login', async (req, res) => {
         req.session.user_id = validUser.id;
         req.session.loggedIn = true;
 
-        res.status(200);
+        res.status(200).json({ user: validUser,loggedIn: req.session.loggedIn, message: 'Login successful'});
     })
     }catch(err){
         console.log(err);
