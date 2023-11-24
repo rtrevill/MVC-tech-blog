@@ -17,6 +17,17 @@ const clickbutton = async (event) => {
     return 
 }
 
+
+const loginAttempt = async (event) => {
+    event.preventDefault();
+
+    const username = document.getElementById('User-login').value;
+    const password = document.getElementById('User-password').value;
+    
+}
+
 document
 .querySelector('.btn')
 .addEventListener('click', clickbutton);
+
+document.getElementById('login-button').addEventListener('click', loginAttempt);
