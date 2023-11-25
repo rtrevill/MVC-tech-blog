@@ -59,4 +59,21 @@ router.get('/create-user', async (req, res) => {
     res.render('create-user');
 });
 
+router.get('/dash', (req, res) => {
+    if (!req.session.loggedIn){
+        res.redirect('/Login')
+    }
+    let loggedInOrNot = req.session.loggedIn;
+    let userNumber = req.session.user_id;
+    console.log(loggedInOrNot, userNumber);
+    res.render('dashboard', {loggedInOrNot, userNumber});
+});
+
+router.get('/new-post', (req,res) => {
+    if (!req.session.loggedIn){
+        res.redirect('/Login')
+    }
+    res.render('new-post');
+});
+
 module.exports = router;
