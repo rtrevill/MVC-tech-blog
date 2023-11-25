@@ -5,5 +5,15 @@
         You Are logged in!!
         {{/if}}
     </p>
+
+    {{#each refinedBlogs as |blogs|}}
+    <div class="blogdiv">
+        <h3>{{title}} Created on {{createdAt}}</h3>
+        <div class="content-box">
+            {{contents}}
+        </div>
+
+    </div>
+    {{/each}}
 <a href="/new-post">Click here to enter a new post</a>
 </div>

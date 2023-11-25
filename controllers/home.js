@@ -59,14 +59,27 @@ router.get('/create-user', async (req, res) => {
     res.render('create-user');
 });
 
-router.get('/dash', (req, res) => {
+router.get('/dash', async (req, res) => {
     if (!req.session.loggedIn){
         res.redirect('/Login')
     }
-    let loggedInOrNot = req.session.loggedIn;
-    let userNumber = req.session.user_id;
-    console.log(loggedInOrNot, userNumber);
-    res.render('dashboard', {loggedInOrNot, userNumber});
+    try{
+        console.log(req.session.loggedIn)
+        const userBlogs = await Blog.findAll({include: [{model: User}], where: 
+            {creator_id: req.session.user_id}}
+        )
+        const refinedBlogs = userBlogs.map((blogs) => blogs.get({ plain : true })); 
+        console.log(refinedBlogs);
+
+        let loggedInOrNot = req.session.loggedIn;
+        let userNumber = req.session.user_id;
+        console.log(loggedInOrNot, userNumber);
+        res.render('dashboard', {loggedInOrNot, userNumber, refinedBlogs});
+    
+    }catch(err){
+        console.log(err);
+    }
+
 });
 
 router.get('/new-post', (req,res) => {
