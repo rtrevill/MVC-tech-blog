@@ -8,7 +8,7 @@
 
     {{#each refinedBlogs as |blogs|}}
     <div class="blogdiv">
-        <h3>{{title}} Created on {{createdAt}}</h3>
+        <h3>{{title}} Created on {{format_date createdAt}}</h3>
         <div class="content-box">
             {{contents}}
         </div>
