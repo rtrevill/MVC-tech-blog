@@ -43,4 +43,22 @@ router.delete('/', async (req, res) => {
     }
 })
 
+router.put('/', async (req,res) => {
+    try{
+        const updatedBlog = await Blog.update({
+            title: req.body.title,
+            contents: req.body.contents,
+        },
+        {
+            where: {
+                id: req.body.id,
+            },
+        })
+        res.status(200).json(updatedBlog);
+    }catch(err){
+        console.log(err);
+    }
+})
+
+
 module.exports = router;
