@@ -7,6 +7,7 @@
     </p>
 
     {{#each refinedBlogs as |blogs|}}
+    <a href="/blog/{{id}}">
     <div class="blogdiv">
         <h3>{{title}} Created on {{format_date createdAt}}</h3>
         <div class="content-box">
@@ -14,6 +15,7 @@
         </div>
 
     </div>
+    </a>
     {{/each}}
 <a href="/new-post">Click here to enter a new post</a>
 </div>
