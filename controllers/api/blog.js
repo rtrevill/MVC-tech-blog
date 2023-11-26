@@ -1,6 +1,18 @@
 const router = require('express').Router();
 const { Blog, User, Comments } = require('../../models');
 
+router.get('/:id', async (req, res) => {
+    try{
+        console.log(req.params.id)
+        const singleBlog = await Blog.findByPk(req.params.id)
+
+        const newBlog = singleBlog.get({ plain:true });
+        res.status(200).render('singleDashBlog', newBlog);
+    }catch(err){
+        console.log(err);
+    }
+});
+
 
 router.post('/', async (req, res) => {
     try{
@@ -16,5 +28,19 @@ router.post('/', async (req, res) => {
         console.log(`Oh No Something went wrong ${err}`);
     }
 });
+
+router.delete('/', async (req, res) => {
+    try{
+        const deleteBlog = await Blog.destroy({
+            where: {
+                id: req.body.id,
+            },
+        });
+        console.log('Post Deleted!')
+        res.status(200).json(deleteBlog);
+    }catch(err){
+        console.log(err);
+    }
+})
 
 module.exports = router;
