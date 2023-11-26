@@ -89,4 +89,17 @@ router.get('/new-post', (req,res) => {
     res.render('new-post');
 });
 
+router.get('/logout', async (req, res) => {
+    try{
+        if (!req.session.loggedIn){
+            res.redirect('/dash');
+        }
+        req.session.destroy(() => {
+            res.status(200).end();
+        })
+    }catch(err){
+        console.log(err);
+    }
+})
+
 module.exports = router;
