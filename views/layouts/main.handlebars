@@ -12,7 +12,9 @@
         <a href="/">Home</a>
         <a href="/dash">Dashboard</a>
         <a href="/login">Login</a>
-        <a href="/Logout">Logout</a>
+        {{#if logged_in}}
+        <a href="/logout">Logout</a>
+        {{/if}}
         </div>
 
         <div class="PageTitle">
