@@ -18,6 +18,7 @@ const loginAttempt = async (event) => {
     
     if (validateUser.ok){
         console.log(`All Good you are now logged in`);
+        location.replace("/dash");
     }
     else{
         console.log("No Good");

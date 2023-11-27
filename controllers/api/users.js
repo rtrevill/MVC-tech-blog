@@ -39,6 +39,20 @@ router.post('/login', async (req, res) => {
     }
 })
 
+router.post('/logout', async (req,res) => {
+    try{
+        if (!req.session.loggedIn){
+            res.redirect('/dash');
+        }
+        req.session.destroy(() => {
+            res.status(200).end();
+        })
+    }catch(err){
+        console.log(err);
+    }
+})
+
+
 // router.get('/:id', async (req,res) => {
 //     try{
 //     const allBlogs = await User.findByPk(req.params.id, {
