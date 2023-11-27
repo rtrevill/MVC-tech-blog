@@ -9,7 +9,7 @@ const newpost = async (event) => {
         body: JSON.stringify({ title, contents}),
         headers: { 'Content-Type': 'application/json' },
         });
-    
+        location.replace('/dash');
         return
 }   
 

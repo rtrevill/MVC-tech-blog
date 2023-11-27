@@ -60,5 +60,21 @@ router.put('/', async (req,res) => {
     }
 })
 
+router.get('/blogComments/:id', async (req,res) => {
+    try{
+        console.log(req.session.loggedIn)
+        if(!req.session.loggedIn){
+            res.redirect('/login');
+        }
+        const blogAndComment = await Blog.findByPk(req.params.id, {include: [{model: Comments}]})
+        const bandC = blogAndComment.get({ plain: true})
+        // console.log(bandComment)
+        res.status(200).render('blogAndComments', {bandC, logged_in: req.session.loggedIn})
+
+    }catch(err){
+        console.log(err);
+    }
+})
+
 
 module.exports = router;

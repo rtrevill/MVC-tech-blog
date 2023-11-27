@@ -74,7 +74,7 @@ router.get('/dash', async (req, res) => {
         let loggedInOrNot = req.session.loggedIn;
         let userNumber = req.session.user_id;
         console.log(loggedInOrNot, userNumber);
-        res.render('dashboard', {loggedInOrNot, userNumber, refinedBlogs});
+        res.render('dashboard', {loggedInOrNot, userNumber, refinedBlogs, logged_in: req.session.loggedIn});
     
     }catch(err){
         console.log(err);
@@ -89,17 +89,17 @@ router.get('/new-post', (req,res) => {
     res.render('new-post');
 });
 
-router.get('/logout', async (req, res) => {
-    try{
-        if (!req.session.loggedIn){
-            res.redirect('/dash');
-        }
-        req.session.destroy(() => {
-            res.status(200).end();
-        })
-    }catch(err){
-        console.log(err);
-    }
-})
+// router.get('/logout', async (req, res) => {
+//     try{
+//         if (!req.session.loggedIn){
+//             res.redirect('/dash');
+//         }
+//         req.session.destroy(() => {
+//             res.status(200).end();
+//         })
+//     }catch(err){
+//         console.log(err);
+//     }
+// })
 
 module.exports = router;
