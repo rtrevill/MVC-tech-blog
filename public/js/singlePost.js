@@ -6,6 +6,9 @@ const deleteBlog = async () => {
     let number = parseInt(urlArray[5]);
     console.log(number);
 
+    // console.log(newBlog.contents);
+
+
     await fetch('/api/blog', {
         method: 'DELETE',
         body: JSON.stringify({id: number}),
@@ -32,7 +35,6 @@ try{
     console.log(err);
 }
 }
-
 
 document.getElementById('update-button').addEventListener('click', updateBlog)
 document.getElementById('delete-button').addEventListener('click', deleteBlog)

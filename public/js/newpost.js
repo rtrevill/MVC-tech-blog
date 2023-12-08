@@ -18,4 +18,4 @@ const newpost = async (event) => {
 
 
 
-document.querySelector('button').addEventListener('click', newpost);
+document.getElementById('postform').addEventListener('submit', newpost);

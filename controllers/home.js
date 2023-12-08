@@ -86,7 +86,7 @@ router.get('/new-post', (req,res) => {
     if (!req.session.loggedIn){
         res.redirect('/Login')
     }
-    res.render('new-post');
+    res.render('new-post', {logged_in: req.session.loggedIn});
 });
 
 // router.get('/logout', async (req, res) => {
