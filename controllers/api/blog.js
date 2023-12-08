@@ -1,13 +1,12 @@
 const router = require('express').Router();
 const { Blog, User, Comments } = require('../../models');
+const withAuth = require('../../utils/auth.js')
 
 router.get('/:id', async (req, res) => {
     try{
-        console.log(req.params.id)
         const singleBlog = await Blog.findByPk(req.params.id)
-
         const newBlog = singleBlog.get({ plain:true });
-        res.status(200).render('singleDashBlog', newBlog);
+        res.status(200).render('singleDashBlog', {newBlog, logged_in: req.session.loggedIn});
     }catch(err){
         console.log(err);
     }
@@ -60,7 +59,7 @@ router.put('/', async (req,res) => {
     }
 })
 
-router.get('/blogComments/:id', async (req,res) => {
+router.get('/blogComments/:id', withAuth ,async (req,res) => {
     try{
         console.log(req.session.loggedIn)
         if(!req.session.loggedIn){
