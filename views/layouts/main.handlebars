@@ -8,7 +8,7 @@
 </head>
 <body>
     <header class="Navbar">
-        <div>
+        <nav>
         <a href="/">Home</a>
         <a href="/dash">Dashboard</a>
         {{#if logged_in}}
@@ -17,11 +17,10 @@
         {{else}}
         <a href="/login">Login</a>
         {{/if}}
+        <div>
+        <p class="page-title">Tech-blog</p>
         </div>
-
-        <div class="PageTitle">
-
-        </div>
+        </nav>
 
     </header>
     <main>
