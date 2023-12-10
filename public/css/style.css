@@ -2,6 +2,11 @@
     --main-green-color: rgba(217,234,211,255);
     --main-brown-color: rgba(35,16,16,255);
     --grey-color: rgba(160,161,159,255);
+    background-color: var(--main-green-color);
+}
+
+ul{
+    margin: 0;
 }
 
 .Navbar {
@@ -11,7 +16,7 @@
     font-size: 1.4rem;
 }
 
-.Navbar a{
+.Navbar li{
     display: inline-block;
     margin: 5px 25px;
 }
@@ -27,8 +32,42 @@
     font-size: 2.5rem;
     font-weight: bold;
     box-shadow: 10px 5px 2px var(--grey-color);
-    /* width: 250px; */
 
+}
+
+.blog-wrapper {
+ color: var(--main-brown-color);
+ border: 5px solid var(--main-brown-color);
+ margin: 15px 50px;
+}
+
+.blog-title{
+    display: flex;
+    color: var(--grey-color);
+    background-color: var(--main-brown-color);
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.title-details{
+    display: inline-block;
+    float: right;
+    margin-right: 15px;
+    /* margin-top: 16px; */
+}
+
+.title-title{
+    display: inline-block;
+    margin-left: 15px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.bodyOfBlog{
+    height: 80px;
+    font-size: 1.1rem;
+    padding: 5px 10px;
 }
 
 a:visited {
