@@ -3,8 +3,17 @@
     Title: {{bandC.title}}
     <br>
     Contents: {{bandC.contents}}
-    <div id="comments-box">
-        <label for="Comments">Comments</label>
-        <textarea name="Comments" id="Comments" cols="30" rows="10">{{bandC.comments.[0].comment}}</textarea>
+    {{#each cAndC}}
+    {{> comment-detail}}
+    {{/each}}
+    {{#if logged_in}}
+    <div id="comments-box" userID="{{userID}}" blogID="{{bandC.id}}">
+        <h4>Please make a comment</h4>
+        <label for="comments" id="comment-label">Comments</label>
+        <textarea name="comments" id="comments" cols="30" rows="10">{{bandC.comments.[0].comment}}</textarea>
+        <button type="button" id="submit-btn">Submit</button>
     </div>
+    {{/if}}
 </div>
+
+<script src="/js/comment.js"></script>

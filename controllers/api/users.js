@@ -42,7 +42,7 @@ router.post('/login', async (req, res) => {
 router.post('/logout', async (req,res) => {
     try{
         if (!req.session.loggedIn){
-            res.redirect('/dash');
+            res.redirect('/');
         }
         req.session.destroy(() => {
             res.status(200).end();

@@ -59,19 +59,37 @@ router.put('/', async (req,res) => {
     }
 })
 
-router.get('/blogComments/:id', withAuth ,async (req,res) => {
+router.get('/blogComments/:id', async (req,res) => {
     try{
-        if(!req.session.loggedIn){
-            res.redirect('/login');
-        }
-        const blogAndComment = await Blog.findByPk(req.params.id, {include: [{model: Comments}]})
+    //     if(!req.session.loggedIn){
+    //         res.redirect('/login');
+    //     }
+        const blogAndComment = await Blog.findByPk(req.params.id, {include: [{model: Comments}, {model:User}]})
         const bandC = blogAndComment.get({ plain: true})
-        res.status(200).render('blogAndComments', {bandC, logged_in: req.session.loggedIn})
+        const commentAndCreator = await Comments.findAll({where: {blog_id: bandC.id}, include: [{model: User}]})
+        const cAndC = commentAndCreator.map((comment) => comment.get({plain: true}))
+        console.log(bandC, cAndC);
+        res.status(200).render('blogAndComments', {bandC, cAndC, logged_in: req.session.loggedIn, userID: req.session.user_id})
 
     }catch(err){
         console.log(err);
     }
-})
+}
+);
+
+router.post('/newComment', async (req,res) => {
+    // console.log('Here I AMMMM');
+    try{
+        const text = req.body.comment;
+        const create = req.body.creator_id;
+        const blog = req.body.blog_id;
+        console.log(text, create, blog);
+        const makeComment = await Comments.create({comment: text, creator_id: create, blog_id: blog});
+        res.status(200).json(makeComment);
+    }catch(err){
+        console.log(err);
+    }
+});
 
 
 module.exports = router;
