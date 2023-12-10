@@ -1,8 +1,14 @@
 <a href="/api/blog/blogComments/{{id}}">
 <div class="blog-wrapper" id="{{id}}">
-    <p class="blog-title">{{title}}       Posted by {{user.username}} on {{format_date createdAt}}</p>
+    <div class="blog-title">
+        <div class="title-title">
+            <p>{{title}} </p>
+        </div>      
+        <div class="title-details">
+            Posted by {{user.username}} on {{format_date createdAt}}
+        </div>
+    </div>
     <div class="bodyOfBlog">
         {{contents}}
     </div>
 </div>
-</a>
