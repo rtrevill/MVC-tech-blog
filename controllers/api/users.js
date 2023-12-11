@@ -4,9 +4,8 @@ const {User, Blog, Comments} = require('../../models')
 router.post('/', async (req,res) => {
     try{
         const newUser = await User.create(req.body);
-
+        console.log('111111111');
         res.status(200).json(newUser);
-        
     }catch(err){
         console.log(`Something went wrong ${err}`);
     }
@@ -34,7 +33,7 @@ router.post('/login', async (req, res) => {
         req.session.loggedIn = true;
 
 
-        res.status(200).json({message: "logged In"});
+        res.status(200).render('dashboard', { user: validUser, loggedIn: req.session.loggedIn});
 
         // res.status(200).json({ user: validUser,loggedIn: req.session.loggedIn, message: 'Login successful'});
     })

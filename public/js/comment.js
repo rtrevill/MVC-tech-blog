@@ -1,7 +1,8 @@
 const submitComment = async (event) => {
+    event.preventDefault();
     const commentText = document.getElementById('comments').value;
-    const userID = document.getElementById('comments-box').getAttribute('userID');
-    const blogID = document.getElementById('comments-box').getAttribute('blogID');
+    const userID = document.getElementById('new-comment-box').getAttribute('userID');
+    const blogID = document.getElementById('new-comment-box').getAttribute('blogID');
 
     try{
         await fetch('/api/blog/newComment', {
@@ -34,4 +35,4 @@ const submitComment = async (event) => {
     console.log(commentText, userID, blogID)
 }
 
-document.getElementById('submit-btn').addEventListener('click', submitComment);
+document.getElementById('new-comment-form').addEventListener('submit', submitComment);

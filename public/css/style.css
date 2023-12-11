@@ -35,26 +35,47 @@ ul{
 
 }
 
-.blog-wrapper {
+.blog-wrapper, #new-comment-box, .post-div, .single-blog-container {
  color: var(--main-brown-color);
  border: 5px solid var(--main-brown-color);
  margin: 15px 50px;
 }
 
-.blog-title{
+.blog-title, .comment-header, .post-header, #post-modify-header{
     display: flex;
     color: var(--grey-color);
     background-color: var(--main-brown-color);
     height: 50px;
     justify-content: space-between;
     align-items: center;
-
 }
+
+.blogdiv{
+    display: flex;
+    color: rgb(212, 211, 211);
+    background-color: rgb(92, 91, 91);
+    height: 50px;
+    width: 90%;
+    padding: 0 15px;
+    margin: 20px auto;
+    border-radius: 5px;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .title-details{
     display: inline-block;
     float: right;
     margin-right: 15px;
-    /* margin-top: 16px; */
+}
+
+.comment-declare{
+    display: inline-block;
+    font-size: 1.2rem;
+}
+
+.comment-header{
+    padding: 0 8px;
 }
 
 .title-title{
@@ -64,10 +85,23 @@ ul{
     font-size: 1.2rem;
 }
 
-.bodyOfBlog{
-    height: 75px;
-    font-size: 1.1rem;
-    padding: 5px 10px;
+.post-header{
+    padding-left: 15px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.bodyOfBlog, .comment-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 70px;
+    font-size: 1rem;
+    padding: 8px 10px;
+}
+
+.blog-comment{
+    margin: 5px 0;
 }
 
 a {
@@ -85,6 +119,13 @@ a:visited {
 #Login-container, #new-user-container{
     border: 4px solid var(--main-brown-color);
     width: 80%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.comments-box{
+    border: 4px solid var(--main-brown-color);
+    width: 70%;
     margin: auto;
     margin-top: 30px;
 }
@@ -107,22 +148,72 @@ label{
     margin: auto;
 }
 
+#new-comment-form, #postform, #blog-update-form > * {
+    display:block;
+    width: 90%;
+    margin: 5px auto;
+}
+
 #login-form, #new-user-form{
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-#login-form input, #new-user-form input{
+#login-form input, #new-user-form input, #post-title{
     margin-bottom: 10px;
     height: 35px;
 }
 
-#login-form button, #new-user-form button{
+#post-content{
+    margin-bottom: 10px;
+    height: 50px;  
+}
+
+#login-form button, #new-user-form button, #new-comment-form button, #postform button, #blog-update-form button{
     height: 40px;
     background-color: var(--grey-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
 }
 
 #signup-link, #login-link{
     padding: 5px 0 25px 0;
+}
+
+#blog-container{
+    height: 95%
+}
+
+#new-post-link{
+    display: block;
+    color: var(--grey-color);
+    background-color: var(--main-brown-color);
+    text-align: center;
+    font-size: 1.4rem;
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    width: 135px;
+    height: 25px;
+    padding: 5px 0;
+    border: 5px solid var(--main-brown-color);
+    border-radius: 5px;
+    margin: auto;
+}
+
+#comments, #postform input, #blog-update-form textarea{
+    border: 3px solid rgb(87, 203, 241);
+}
+
+#blog-title{
+    height: 30px;
+    font-size: 1rem;
+}
+
+#blog-contents{
+    height: 60px;
+    font-size: 1rem;
 }

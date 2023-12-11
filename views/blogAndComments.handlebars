@@ -1,19 +1,33 @@
-<h2>Blog Details</h2>
-<div>
-    Title: {{bandC.title}}
-    <br>
-    Contents: {{bandC.contents}}
+<div class="blog-wrapper">
+    <div class="blog-title">
+        <div class="title-title">
+            <p>{{bandC.title}} </p>
+        </div>      
+        <div class="title-details">
+            Posted by {{bandC.user.username}} on {{format_date bandC.createdAt}}
+        </div>
+    </div>
+    <div class="bodyOfBlog">
+        {{bandC.contents}}
+    </div>
+</div>
+
+{{!-- <div>
+    {{bandC.title}}
+    <br> --}}
     {{#each cAndC}}
-    {{> comment-detail}}
+        {{> comment-detail}}
     {{/each}}
     {{#if logged_in}}
-    <div id="comments-box" userID="{{userID}}" blogID="{{bandC.id}}">
-        <h4>Please make a comment</h4>
-        <label for="comments" id="comment-label">Comments</label>
-        <textarea name="comments" id="comments" cols="30" rows="10">{{bandC.comments.[0].comment}}</textarea>
-        <button type="button" id="submit-btn">Submit</button>
+    <div id="new-comment-box" userID="{{userID}}" blogID="{{bandC.id}}">
+        <div class="comment-header"></div>
+        <form id="new-comment-form">
+            <label for="comments" id="comment-label">Comment</label>
+            <textarea name="comments" id="comments" cols="30" rows="10"></textarea>
+            <button type="submit" id="submit-btn">Submit</button>
+        </form>
     </div>
     {{/if}}
-</div>
+{{!-- </div> --}}
 
 <script src="/js/comment.js"></script>
