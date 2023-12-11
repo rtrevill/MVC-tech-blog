@@ -1,12 +1,14 @@
 <div class="single-blog-container">
- <textarea name="Title" id="blog-title" cols="30" rows="10">{{newBlog.title}}</textarea>
- <div>
-    Contents:
-    <textarea name="Contents" id="blog-contents" cols="30" rows="10">{{newBlog.contents}}</textarea>
- </div>
+   <div id="post-modify-header">
+      Edit Post
+   </div>
+   <form id="blog-update-form">
+      <label for="blog-title">Title</label>
+      <textarea name="blog-title" id="blog-title" cols="30" rows="10">{{newBlog.title}}</textarea>
+      <label for="blog-contents">Content</label>
+      <textarea name="Contents" id="blog-contents" cols="30" rows="10">{{newBlog.contents}}</textarea>
+      <button type="button" id="update-button">Update Post</button>
+      <button type="button" id="delete-button">Delete</button>
+   </form>
 </div>
-
-<button type="button" id="update-button">Update Post</button>
-<button type="button" id="delete-button">Delete</button>
-
 <script src="/js/singlePost.js"></script>

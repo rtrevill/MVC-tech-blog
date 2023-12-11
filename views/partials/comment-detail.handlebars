@@ -1,5 +1,12 @@
 <div class="comments-box">
-    <h3>{{comment}}</h3>
-    <p>{{user.username}}</p>
-    <p>{{format_date createdAt}}</p>
+    <div class="comment-header">
+            <div class="comment-declare">
+                Comment
+            </div>
+    </div>
+    <div class="comment-container">
+    <p class="blog-comment">{{comment}}</p>
+    <i class="who-commented">- {{user.username}}, {{format_date createdAt}}</i>
+
+    </div>
 </div>

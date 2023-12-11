@@ -1,21 +1,11 @@
-<div>
-    <h2>This is the dashboard</h2>
-
-    <p>{{#if loggedInOrNot}}
-        You Are logged in!!
-        {{/if}}
-    </p>
-
+<div id="blog-container">
     {{#each refinedBlogs as |blogs|}}
-    <a href="/api/blog/{{id}}">
-    <div class="blogdiv">
-        <h3>{{title}} Created on {{format_date createdAt}}</h3>
-        <div class="content-box">
-            {{contents}}
+        <a href="/api/blog/{{id}}">
+        <div class="blogdiv">
+            <h3>{{title}}</h3>
+            <p>{{format_date createdAt}}</p>
         </div>
-
-    </div>
-    </a>
+        </a>
     {{/each}}
-<a href="/new-post">Click here to enter a new post</a>
+<a href="/new-post" id="new-post-link">+ New Post</a>
 </div>
