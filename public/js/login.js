@@ -4,14 +4,13 @@ const loginAttempt = async (event) => {
     event.preventDefault();
 
     const username = document.getElementById('User-login').value;
-    const email = document.getElementById('User-email').value;
     const password = document.getElementById('User-password').value;
 
     if (username && password){
         // console.log(username, email, password);
         const validateUser = await fetch('/api/users/login', {
             method: 'POST',
-            body: JSON.stringify({username, email, password}),
+            body: JSON.stringify({username, password}),
             headers: {'content-type': 'application/json'},
         })
         
@@ -27,4 +26,4 @@ const loginAttempt = async (event) => {
 }
 
 
-document.getElementById('login-button').addEventListener('click', loginAttempt);
+document.getElementById('login-form').addEventListener('submit', loginAttempt);

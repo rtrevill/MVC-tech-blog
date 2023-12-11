@@ -1,15 +1,13 @@
-<div>
-    <h2>Login Page</h2>
-    <form class="login-form">
+<div id="Login-container">
+    <h2>Login</h2>
+    <form id="login-form">
         <label for="Username">Username</label>
         <input class="login-inputs" type="text" id="User-login">
-        <label for="Email">Email</label>
-        <input class="login-inputs" type="text" id="User-email">
         <label for="Password">Password</label>
         <input class="login-inputs" type="password" id="User-password">
-        <button id="login-button" type="button">Submit</button>
+        <button id="login-button" type="submit">Login!</button>
+        <a href="/create-User" id="signup-link">Sign up instead</a>
     </form>
 </div>
-<a href="/create-User">To create a new user -click here-</a>
 
 <script src="/js/login.js"></script>
