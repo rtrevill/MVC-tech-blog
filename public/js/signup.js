@@ -1,4 +1,4 @@
-const clickbutton = async (event) => {
+const clickbutton = (event) => {
 
     const username = document.querySelector('#new-user-name').value;
     const password = document.querySelector('#new-user-password').value;
@@ -8,7 +8,7 @@ const clickbutton = async (event) => {
     (!username||!password) ? errorMessages(1) :
     (password.length<8) ? errorMessages(2) :
     usernameCheck(username, password);
-}
+};
 
 const usernameCheck = async (username,password) => {
     try{
@@ -27,9 +27,10 @@ const usernameCheck = async (username,password) => {
     }catch(err){
         console.log(err);
     }
-}
+};
 
 const createUser = async (username, password) => {
+    try{
     await fetch('/api/users', {
         method: 'POST',
         body: JSON.stringify({username, password}),
@@ -41,15 +42,21 @@ const createUser = async (username, password) => {
         .then(() => {
             window.location.replace('/dash');
         })
-}
-
+    }catch(err){
+        console.log(err);
+    }
+};
 
 const validateUser = async (username, password) => {
-    await fetch('/api/users/login', {
-    method: 'POST',
-    body: JSON.stringify({username, password}),
-    headers: {'content-type': 'application/json'},
+    try{
+        await fetch('/api/users/login', {
+        method: 'POST',
+        body: JSON.stringify({username, password}),
+        headers: {'content-type': 'application/json'},
     })
+    }catch(err){
+        console.log(err);
+    }
 return;
 };
 

@@ -19,7 +19,7 @@ router.post('/login', async (req, res) => {
             return;
         }
 
-    const validatePassword = validUser.checkPassword(req.body.password);
+        const validatePassword = validUser.checkPassword(req.body.password);
 
         if (!validatePassword) {
             res.status(400).json({ message: 'Not a valid password provided'});
@@ -30,8 +30,7 @@ router.post('/login', async (req, res) => {
         req.session.user_id = validUser.id;
         req.session.loggedIn = true;
 
-
-        res.status(200).render('dashboard', { user: validUser, loggedIn: req.session.loggedIn, pageTitle: "Your Dashboard"});
+        res.status(200).json({message: "OKAY"})
 
     })
     }catch(err){
@@ -50,7 +49,7 @@ router.get('/logout', async (req,res) => {
     }catch(err){
         console.log(err);
     }
-})
+});
 
 router.get('/:id', async(req,res) => {
     try{

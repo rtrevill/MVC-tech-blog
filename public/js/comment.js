@@ -18,9 +18,6 @@ const submitComment = async (event) => {
             try{
             if(response.ok){
                 location.reload();
-                // await fetch(`/api/blog/blogComments/${blogID}`,{
-                //     method: 'GET',
-                // })
             }
             }catch(err){
                 console.log(err);

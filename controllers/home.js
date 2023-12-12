@@ -11,6 +11,7 @@ router.get('/', async (req,res) => {
             ['id', 'DESC']
         ],
     });
+
     const blogs = allBlogs.map((blog) => blog.get({ plain: true }));
 
     res.render('homepage', {
@@ -29,7 +30,9 @@ router.get('/user/:id', async (req,res) => {
     const allBlogs = await User.findByPk(req.params.id, {
         include: [{model: Blog}, {model: Comments}]
     });
+
     const blogs = allBlogs.get({ plain: true });
+
     res.render('homepage', {
         blogs,
         pageTitle: "The Tech Blog"});
@@ -48,30 +51,22 @@ router.get('/create-user', async (req, res) => {
     res.render('create-user', {pageTitle: "The Tech Blog"});
 });
 
-router.get('/dash', async (req, res) => {
-    if (!req.session.loggedIn){
-        res.redirect('/Login')
-    }
+router.get('/dash', withAuth, async (req, res) => {
     try{
         const userBlogs = await Blog.findAll({include: [{model: User}], where: 
             {creator_id: req.session.user_id}}
         )
+
         const refinedBlogs = userBlogs.map((blogs) => blogs.get({ plain : true })); 
 
-        let loggedInOrNot = req.session.loggedIn;
-        let userNumber = req.session.user_id;
-        res.render('dashboard', {loggedInOrNot, userNumber, refinedBlogs, logged_in: req.session.loggedIn, pageTitle: "Your Dashboard"});
+        res.render('dashboard', {refinedBlogs, logged_in: req.session.loggedIn, pageTitle: "Your Dashboard"});
     
     }catch(err){
         console.log(err);
     }
-
 });
 
-router.get('/new-post', (req,res) => {
-    if (!req.session.loggedIn){
-        res.redirect('/Login', {pageTitle: "The Tech Blog"})
-    }
+router.get('/new-post', withAuth, (req,res) => {
     res.render('new-post', {logged_in: req.session.loggedIn, pageTitle: "Your Dashboard"});
 });
 
