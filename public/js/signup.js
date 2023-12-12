@@ -55,7 +55,7 @@ return;
 
 const errorMessages = (num) => {
     (num === 1) ? window.alert("Please complete all fields"):
-    (num === 2) ? window.alert("Please enter at least 7 characters for a password"):
+    (num === 2) ? window.alert("Please enter at least 8 characters for a password"):
     (num === 3) ? window.alert("This username is already taken"):
     console.log("Unknown error");
 
