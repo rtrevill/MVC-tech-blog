@@ -1,3 +1,7 @@
+// Event handler and function for logging a user in.
+// Function saves login information and sends a Post request
+// If the login is okay, that user's dashboard is displayed,  
+// otherwise an alert is shown for an unsuccessful login attempt
 
 const loginAttempt = async (event) => {
     event.preventDefault();

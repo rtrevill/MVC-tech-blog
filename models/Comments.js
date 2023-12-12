@@ -1,6 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
+
+// Initializes and specifies parameters for Comments model (sequelize),
+// including creating associations with other models
 class Comments extends Model {}
 
 Comments.init(

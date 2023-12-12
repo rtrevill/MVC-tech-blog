@@ -1,3 +1,9 @@
+// 2 Event handlers and functions to update, or delete blog posts
+
+
+// deleteBlog function takes the blog id from the url address, and then sends a Delete request 
+// to remove this blog.
+// Once complete, user's dashboard is shown.
 const deleteBlog = async () => {
     let url = window.location.href;
     let urlArray = url.split('/');
@@ -14,6 +20,11 @@ const deleteBlog = async () => {
         console.log(err);
     }
 };
+
+
+// updateBlog function takes the blog id from the url address, and then sends a Put request 
+// to update this blog.
+// Once complete, user's dashboard is shown.
 
 const updateBlog = async () => {
     const url = (window.location.href).split('/');

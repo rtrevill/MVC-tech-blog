@@ -1,3 +1,7 @@
+// Event handler and function for when a new comment is made.
+// Function sends a post request for the comment, then, if ok, reloads the page
+// which will have the new comment on it.
+
 const submitComment = async (event) => {
     event.preventDefault();
     const commentText = document.getElementById('comments').value;

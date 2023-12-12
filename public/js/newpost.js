@@ -1,3 +1,7 @@
+// Event handler and function for creating a new blog entry.
+// Function saves user entered data and sends a Post query to create a new blog post.
+// When completed, the user's dashboard is displayed with the new post being listed.
+
 const newpost = async (event) => {
     try{
     event.preventDefault();

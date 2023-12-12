@@ -1,3 +1,5 @@
+// 2 functions to be globally available to reformat dates and times
+
 module.exports = {
   format_time: (date) => {
     return date.toLocaleTimeString();

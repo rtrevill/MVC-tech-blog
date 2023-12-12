@@ -46,6 +46,8 @@ router.post('/login', async (req, res) => {
     }
 })
 
+
+// Ends user's session on express.session
 router.get('/logout', async (req,res) => {
     try{
         if (!req.session.loggedIn){
@@ -59,6 +61,8 @@ router.get('/logout', async (req,res) => {
     }
 });
 
+
+// Query to check if a user exists
 router.get('/:id', async(req,res) => {
     try{
         const checkUser = await User.findOne({where: {username: req.params.id}})

@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection.js');
 
-
+// Initializes and specifies parameters for Blog model (sequelize)
 class Blog extends Model {}
 
 Blog.init(
