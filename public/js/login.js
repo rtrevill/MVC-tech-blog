@@ -1,4 +1,3 @@
-// const {User} = require("../../models");
 
 const loginAttempt = async (event) => {
     event.preventDefault();
@@ -7,7 +6,6 @@ const loginAttempt = async (event) => {
     const password = document.getElementById('User-password').value;
 
     if (username && password){
-        // console.log(username, email, password);
         const validateUser = await fetch('/api/users/login', {
             method: 'POST',
             body: JSON.stringify({username, password}),
@@ -16,11 +14,10 @@ const loginAttempt = async (event) => {
         
     
     if (validateUser.ok){
-        console.log(`All Good you are now logged in`);
         location.replace("/dash");
     }
     else{
-        console.log("No Good");
+        window.alert("Sorry, Login unsuccessful");
     }
 }
 }

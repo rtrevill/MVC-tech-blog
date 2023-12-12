@@ -18,15 +18,14 @@
                 </li>
                 <li>
                     {{#if logged_in}}
-                    {{!-- <button id="logout" class="btn-logout">Logout</button> --}}
-                    <a href="/api/users/logout">Logout</a>
+                        <a href="/api/users/logout">Logout</a>
                     {{else}}
-                    <a href="/login">Login</a>
+                        <a href="/login">Login</a>
                     {{/if}}
                 </li>
             </ul>
         <div>
-        <p class="page-title">The Tech Blog</p>
+        <p class="page-title">{{pageTitle}}</p>
         </div>
         </nav>
 

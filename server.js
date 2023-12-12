@@ -12,19 +12,19 @@ const app = express();
 const PORT = process.env.PORT||3001;
 
 const sess = {
-    secret: 'VeryQuiet',
+    secret: process.env.DB_SECRET,
     cookie: {},
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
         db: sequelize,
+        expiration: 1000 * 60 * 30 // will expire after 30 minutes
     }),
 };
 
 app.use(session(sess));
   
 const hbs = exphbs.create({ helpers });
-// const hbs = exphbs.create({});
 
 
 app.engine('handlebars', hbs.engine);

@@ -32,7 +32,6 @@ const submitComment = async (event) => {
     }
 
 
-    console.log(commentText, userID, blogID)
 }
 
 document.getElementById('new-comment-form').addEventListener('submit', submitComment);

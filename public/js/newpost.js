@@ -3,7 +3,6 @@ const newpost = async (event) => {
 
     const title = document.getElementById('post-title').value;
     const contents = document.getElementById('post-content').value;
-    // const creator_id = req.session.user_id;
     await fetch('/api/blog', {
         method: 'POST',
         body: JSON.stringify({ title, contents}),

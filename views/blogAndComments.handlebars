@@ -12,22 +12,18 @@
     </div>
 </div>
 
-{{!-- <div>
-    {{bandC.title}}
-    <br> --}}
-    {{#each cAndC}}
-        {{> comment-detail}}
-    {{/each}}
-    {{#if logged_in}}
-    <div id="new-comment-box" userID="{{userID}}" blogID="{{bandC.id}}">
-        <div class="comment-header"></div>
-        <form id="new-comment-form">
-            <label for="comments" id="comment-label">Comment</label>
-            <textarea name="comments" id="comments" cols="30" rows="10"></textarea>
-            <button type="submit" id="submit-btn">Submit</button>
-        </form>
-    </div>
-    {{/if}}
-{{!-- </div> --}}
+{{#each cAndC}}
+    {{> comment-detail}}
+{{/each}}
+{{#if logged_in}}
+<div id="new-comment-box" userID="{{userID}}" blogID="{{bandC.id}}">
+    <div class="comment-header"></div>
+    <form id="new-comment-form">
+        <label for="comments" id="comment-label">Comment</label>
+        <textarea name="comments" id="comments" cols="30" rows="7"></textarea>
+        <button type="submit" id="submit-btn">Submit</button>
+    </form>
+</div>
+{{/if}}
 
 <script src="/js/comment.js"></script>

@@ -148,7 +148,7 @@ label{
     margin: auto;
 }
 
-#new-comment-form, #postform, #blog-update-form > * {
+#new-comment-form > *, #blog-update-form > *, #postform > * {
     display:block;
     width: 90%;
     margin: 5px auto;
@@ -180,6 +180,7 @@ label{
 
 #signup-link, #login-link{
     padding: 5px 0 25px 0;
+    color: blue;
 }
 
 #blog-container{

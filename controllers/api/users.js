@@ -4,7 +4,6 @@ const {User, Blog, Comments} = require('../../models')
 router.post('/', async (req,res) => {
     try{
         const newUser = await User.create(req.body);
-        console.log('111111111');
         res.status(200).json(newUser);
     }catch(err){
         console.log(`Something went wrong ${err}`);
@@ -14,7 +13,6 @@ router.post('/', async (req,res) => {
 router.post('/login', async (req, res) => {
     try{
         const validUser = await User.findOne({ where: {username: req.body.username}});
-        console.log(validUser);
 
         if (!validUser) {
             res.status(400).json({message: 'Cannot find user with this Username'});
@@ -33,9 +31,8 @@ router.post('/login', async (req, res) => {
         req.session.loggedIn = true;
 
 
-        res.status(200).render('dashboard', { user: validUser, loggedIn: req.session.loggedIn});
+        res.status(200).render('dashboard', { user: validUser, loggedIn: req.session.loggedIn, pageTitle: "Your Dashboard"});
 
-        // res.status(200).json({ user: validUser,loggedIn: req.session.loggedIn, message: 'Login successful'});
     })
     }catch(err){
         console.log(err);
@@ -50,6 +47,15 @@ router.get('/logout', async (req,res) => {
         req.session.destroy(() => {
             res.status(200).redirect('/');
         })
+    }catch(err){
+        console.log(err);
+    }
+})
+
+router.get('/:id', async(req,res) => {
+    try{
+        const checkUser = await User.findOne({where: {username: req.params.id}})
+        res.status(200).json(checkUser);
     }catch(err){
         console.log(err);
     }

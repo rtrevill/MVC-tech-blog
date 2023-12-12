@@ -1,12 +1,7 @@
 const deleteBlog = async () => {
-    console.log(window.location.href);
     let url = window.location.href;
     let urlArray = url.split('/');
-    console.log(urlArray);
     let number = parseInt(urlArray[5]);
-    console.log(number);
-
-    // console.log(newBlog.contents);
 
 
     await fetch('/api/blog', {
@@ -14,6 +9,7 @@ const deleteBlog = async () => {
         body: JSON.stringify({id: number}),
         headers: { 'Content-Type': 'application/json' },
     })
+    window.alert('Post Deleted!');
     location.replace("/dash");
 };
 
@@ -22,14 +18,13 @@ const updateBlog = async () => {
     const id = parseInt(url[5]);
     const title = document.getElementById('blog-title').value;
     const contents = document.getElementById('blog-contents').value;
-    // console.log(urlIndex, titleArea, contentsArea);
 try{
     await fetch('/api/blog/', {
         method: 'PUT',
         body: JSON.stringify({id, title, contents}),
         headers: { 'Content-Type': 'application/json' },
     });
-    console.log('Blog updated')
+    window.alert('Blog updated')
     location.replace('/dash');
 }catch(err){
     console.log(err);
