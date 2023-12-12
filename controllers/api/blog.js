@@ -1,6 +1,10 @@
 const router = require('express').Router();
+
+// Import models for Sequelize queries
 const { Blog, User, Comments } = require('../../models');
 
+
+// Finds details of a specific blog, then renders "SingleDashBlog" page (for updating/deleting post)
 router.get('/:id', async (req, res) => {
     try{
         const singleBlog = await Blog.findByPk(req.params.id)
@@ -12,6 +16,7 @@ router.get('/:id', async (req, res) => {
 });
 
 
+// Takes req.body parameters, and current user id number, and creates a new blog in dbase.
 router.post('/', async (req, res) => {
     try{
         const creator_id = req.session.user_id;
@@ -26,6 +31,8 @@ router.post('/', async (req, res) => {
     }
 });
 
+
+// Deletes blog that is specified in the req body.
 router.delete('/', async (req, res) => {
     try{
         const deleteBlog = await Blog.destroy({
@@ -39,6 +46,8 @@ router.delete('/', async (req, res) => {
     }
 });
 
+
+// Updates the title and contents of a specified blog (details from req.body).
 router.put('/', async (req,res) => {
     try{
         const updatedBlog = await Blog.update({
@@ -56,6 +65,10 @@ router.put('/', async (req,res) => {
     }
 });
 
+
+// First, finds details of a specified blog, then uses the blog id to find any comments(and authors) associated
+// with that blog.
+// Then renders 'blogAndComments' with these details.
 router.get('/blogComments/:id', async (req,res) => {
     try{
         const blogAndComment = await Blog.findByPk(req.params.id, {include: [{model: Comments}, {model:User}]})
@@ -72,6 +85,7 @@ router.get('/blogComments/:id', async (req,res) => {
 }
 );
 
+// Creates new comment from details supplied in req.body.
 router.post('/newComment', async (req,res) => {
     try{
         const makeComment = await Comments.create(req.body);

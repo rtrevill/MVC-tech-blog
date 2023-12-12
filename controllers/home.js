@@ -1,8 +1,11 @@
 const router = require('express').Router();
+
+// Import models for sequelize queries, and import function to check if user is logged in.
 const { Blog, User, Comments } = require('../models');
 const withAuth = require('../utils/auth');
 
-
+// Get all blogs, and list them in reverse chronological order,
+//then render the homepage, with login status.
 router.get('/', async (req,res) => {
     try{
     const allBlogs = await Blog.findAll({
@@ -25,32 +28,20 @@ router.get('/', async (req,res) => {
 
 });
 
-router.get('/user/:id', async (req,res) => {
-    try{
-    const allBlogs = await User.findByPk(req.params.id, {
-        include: [{model: Blog}, {model: Comments}]
-    });
 
-    const blogs = allBlogs.get({ plain: true });
-
-    res.render('homepage', {
-        blogs,
-        pageTitle: "The Tech Blog"});
-    }
-    catch(err){
-        res.status(500).json({message: `Something went wrong ${err}`});
-    }
-
-});
-
+// Renders login page when called
 router.get('/login', async (req,res) => {
     res.render('login', {pageTitle: "The Tech Blog"});
 });
 
+
+// Renders 'Create User' page when called
 router.get('/create-user', async (req, res) => {
     res.render('create-user', {pageTitle: "The Tech Blog"});
 });
 
+
+// Checks login status of user, then renders the dashboard page, with all the user's blogs listed.
 router.get('/dash', withAuth, async (req, res) => {
     try{
         const userBlogs = await Blog.findAll({include: [{model: User}], where: 
@@ -66,6 +57,8 @@ router.get('/dash', withAuth, async (req, res) => {
     }
 });
 
+
+// Checks login status, then renders "New Post" page
 router.get('/new-post', withAuth, (req,res) => {
     res.render('new-post', {logged_in: req.session.loggedIn, pageTitle: "Your Dashboard"});
 });

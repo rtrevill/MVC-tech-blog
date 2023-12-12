@@ -1,6 +1,10 @@
 const router = require('express').Router();
+
+// Import models for Sequelize queries.
 const {User, Blog, Comments} = require('../../models')
 
+
+// Create new user from details supplied in req.body
 router.post('/', async (req,res) => {
     try{
         const newUser = await User.create(req.body);
@@ -10,6 +14,10 @@ router.post('/', async (req,res) => {
     }
 });
 
+
+// Checks login details of user, first checking if there is a matching username,
+// Then checks password with 'checkPassword' function (from user model)
+// If both okay, creates a new session using express.session
 router.post('/login', async (req, res) => {
     try{
         const validUser = await User.findOne({ where: {username: req.body.username}});

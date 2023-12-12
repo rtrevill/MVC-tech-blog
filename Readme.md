@@ -10,7 +10,7 @@ Please feel free to explore the application at the following links:
 
 - Link to GitHub repository: https://github.com/rtrevill/MVC-tech-blog
 
-Deployed application pictures:
+## Deployed application pictures:
 ![Alt text](public/files/blog1.png)
 
 ![Alt text](public/files/blog2.png)
