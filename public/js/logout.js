@@ -1,3 +1,6 @@
+// Event handler and function that sends a post request to log a user out.
+// If okay, user is sent back to root page.
+
 const logoutUser = async (event) =>{
    try{
         await fetch('/api/users/logout', {
